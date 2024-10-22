@@ -1,5 +1,5 @@
 ## Additional Notes
 We provide all the input files for this simulation, 
-including COF geometry parameter calculation(''), 
+including COF geometry parameter calculation('Geometric-stru'), 
 adsorption simulation and diffusion simulation files. 
 And for Henry's post-processing, we provide data processing scripts ('Henry.py').
