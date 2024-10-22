@@ -1,0 +1,58 @@
+SimulationType                MonteCarlo
+NumberOfCycles                  20000
+NumberOfInitializationCycles    10000
+RestartFile                    no
+PrintEvery                     5000
+
+Forcefield                    GenericMOFs
+UseChargesFromCIFFile         yes
+EwaldPrecision                1e-6
+RemoveAtomNumberCodeFromLabel yes
+
+ChargeMethod                  Ewald
+CutOff                        12.8
+
+Framework                     0 
+FrameworkName	08000N3_ddec_milar
+UnitCells	2	2	2
+HeliumVoidFraction	0.38165
+ExternalTemperature           298.0
+ExternalPressure              100000
+
+
+Movies                        no 
+WriteMoviesEvery              5000
+
+Component 0 MoleculeName             methane
+            MoleculeDefinition       TraPPE	
+            MolFraction              0.7			
+            IdealGasRosenbluthWeight 1.0
+            TranslationProbability   0.5
+            RegrowProbability        0.5
+            RotationProbability      0.5
+            ReinsertionProbability   0.5
+            SwapProbability          1.0
+            CreateNumberOfMolecules  0
+
+Component 1 MoleculeName             H2
+            MoleculeDefinition       TraPPE	
+            MolFraction              0.2
+            IdealGasRosenbluthWeight 1.0
+            TranslationProbability   0.5
+            RegrowProbability        0.5
+            RotationProbability      0.5
+            ReinsertionProbability   0.5
+            SwapProbability          1.0
+            CreateNumberOfMolecules  0
+
+Component 2 MoleculeName             ethane
+            MoleculeDefinition       TraPPE	
+            MolFraction              0.1
+            IdealGasRosenbluthWeight 1.0
+            TranslationProbability   0.5
+            RegrowProbability        0.5
+            RotationProbability      0.5
+            ReinsertionProbability   0.5
+            SwapProbability          1.0
+            CreateNumberOfMolecules  0
+
