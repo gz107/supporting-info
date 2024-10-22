@@ -1,1 +1,67 @@
 
+SimulationType                MolecularDynamics
+NumberOfCycles                5000000.0
+NumberOfEquilibrationCycles   10000.0
+NumberOfInitializationCycles  1000
+PrintEvery                    50000.0
+RestartFile                   yes
+
+Ensemble                      NVT
+RemoveAtomNumberCodeFromLabel yes
+UseChargesFromCIFFile         yes
+
+Forcefield                    GenericMOFs
+CutOff                        12.8
+ChargeMethod                  Ewald
+EwaldPrecision                1e-6
+
+TimeStep                      0.001
+ComputeMSD                    yes
+PrintMSDEvery                 50000.0
+
+Framework                     0
+FrameworkName                 64_milar
+InputFileType                 cif
+UnitCells                     3 3 3
+ExternalTemperature           298
+ExternalPressure              100000.0
+
+Component 0 MoleculeName                methane
+            StartingBead                 0
+            MoleculeDefinition           TraPPE
+            MolFraction                  0.7
+            IdentityChangeProbability    1.0
+            NumberOfIdentityChanges      3
+            IdentityChangesList          0 1 2
+            IdealGasRosenbluthWeight     1.00025
+            TranslationProbability       1.0
+            RotationProbability          1.0
+            ReinsertionProbability       1.0
+            CreateNumberOfMolecules      0
+
+Component 1 MoleculeName               H2
+            StartingBead                 0
+            MoleculeDefinition           TraPPE
+            MolFraction                  0.2
+            IdentityChangeProbability    1.0
+            NumberOfIdentityChanges      3
+            IdentityChangesList          0 1 2
+            IdealGasRosenbluthWeight     1.00002
+            TranslationProbability       1.0
+            RotationProbability          1.0
+            ReinsertionProbability       1.0
+            CreateNumberOfMolecules      0
+
+Component 2 MoleculeName               ethane
+            StartingBead                 0
+            MoleculeDefinition           TraPPE
+            MolFraction                  0.1
+            IdentityChangeProbability    1.0
+            NumberOfIdentityChanges      3
+            IdentityChangesList          0 1 2
+            IdealGasRosenbluthWeight     1.00074
+            TranslationProbability       1.0
+            RotationProbability          1.0
+            ReinsertionProbability       1.0
+            CreateNumberOfMolecules      0
+
