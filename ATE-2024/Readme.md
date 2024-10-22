@@ -18,4 +18,4 @@ adsorption simulation and diffusion simulation files.
 #-------------------------------#
 
 **Title: High-throughput screening of covalent organic framework membranes separation for hydrogen from hydrogen-blended natural gas**
-**Authors: Zheng Gao, Hui Wang, Zhiguo Qu, Zetian Tang**
+**Authors: Z.Gao, H.Wang, Z.G. Qu, Z.T.Tang**
