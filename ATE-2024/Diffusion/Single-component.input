@@ -1,1 +1,36 @@
+SimulationType                MolecularDynamics
+NumberOfCycles                1000000.0
+NumberOfEquilibrationCycles   10000.0
+NumberOfInitializationCycles  5000
+PrintEvery                    5000
+RestartFile                   no
+
+Ensemble                      NVT
+RemoveAtomNumberCodeFromLabel yes
+UseChargesFromCIFFile         yes
+
+Forcefield                    GenericMOFs  
+CutOff                        12.8
+ChargeMethod                  Ewald
+EwaldPrecision                1e-6
+TimeStep                      0.001
+
+ComputeMSD                    yes
+PrintMSDEvery                 50000.0
+
+Framework                     0
+FrameworkName                 COF-1  #COF name
+InputFileType                 cif
+UnitCells                     5 3 2
+ExternalTemperature           298
+ExternalPressure              100000.0
+
+Component 0 MoleculeName                 H2   #CH4; C2H6
+            StartingBead                 0
+            MoleculeDefinition           TraPPE
+            IdealGasRosenbluthWeight     1.00000
+            TranslationProbability       1.0
+            RotationProbability          1.0
+            ReinsertionProbability       1.0
+            CreateNumberOfMolecules      32
 
