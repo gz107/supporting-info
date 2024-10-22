@@ -26,7 +26,7 @@ UnitCells                     3 3 3
 ExternalTemperature           298
 ExternalPressure              100000.0
 
-Component 0 MoleculeName                methane
+Component 0 MoleculeName                 methane
             StartingBead                 0
             MoleculeDefinition           TraPPE
             MolFraction                  0.7
@@ -39,7 +39,7 @@ Component 0 MoleculeName                methane
             ReinsertionProbability       1.0
             CreateNumberOfMolecules      0
 
-Component 1 MoleculeName               H2
+Component 1 MoleculeName                 H2
             StartingBead                 0
             MoleculeDefinition           TraPPE
             MolFraction                  0.2
@@ -52,7 +52,7 @@ Component 1 MoleculeName               H2
             ReinsertionProbability       1.0
             CreateNumberOfMolecules      0
 
-Component 2 MoleculeName               ethane
+Component 2 MoleculeName                 ethane
             StartingBead                 0
             MoleculeDefinition           TraPPE
             MolFraction                  0.1
