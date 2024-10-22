@@ -1,0 +1,21 @@
+SimulationType         MonteCarlo 
+NumberOfCycles            50000 
+NumberOfInitializationCycles 0 
+PrintEvery               25000 
+PrintPropertiesEvery     25000 
+
+Forcefield             GenericMOFs 
+
+Framework 0 
+FrameworkName     COF-1  
+RemoveAtomNumberCodeFromLabel    yes 
+UnitCells 3 3 3 
+ExternalTemperature 298.0        
+
+Component 0 MoleculeName                  H2 #CH4; C2H6
+            MoleculeDefinition            TraPPE 
+            IdealGasRosenbluthWeight      1.000
+            WidomProbability              1.0 
+            CreateNumberOfMolecules        0 
+
+  
