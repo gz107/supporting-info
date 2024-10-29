@@ -1,94 +1,72 @@
-#-----------------------------------#
-#Developed by Z.GAO
-#Data 2022.5
-#Function: get data from files
-#----------------------------------#
 import os
-from pandas import read_excel
-from pandas import DataFrame
-import pandas as pd
 import re
+import pandas as pd
+
+# 获取输入参数
 lines0 = input('What is the solving name?')
-#Var_name=["Partial pressure","Average loading absolute [mol/kg framework]"]
-Var_name=["Enthalpy of adsorption"]
-Comp_num = int(input('Compoents number?'))
-delay_num = 11;
-read_num = 0;
-key = 0;
-Var_state=0;
-pressure_list=os.listdir(lines0)
-pnum=len(pressure_list)
-tnum = []
-temp_list=[[]];
-sample_list=[[[]]];
-out_data = [[],[],[]]
-for i in range(len(Var_name)*Comp_num):
-    out_data.append([])
-    
-for i in range(pnum):
-    path_now=lines0+'\\'+pressure_list[i];
-    temp_list[i]=os.listdir(path_now);
-    temp_list.append([])
-    sample_list.append([[]])
-    for j in range(len(temp_list[i])):
-        path_now=lines0+'\\'+pressure_list[i]+'\\'+temp_list[i][j];
-        abc = os.listdir(path_now);
-        sample_list[i][j]=abc[0:len(abc)-32]
-        #sample_list[i][j]=abc[0:len(abc)]
-        sample_list[i].append([])
-        
-        for k in range(len(sample_list[i][j])):
-            out_data[0].append(pressure_list[i])
-            out_data[1].append(temp_list[i][j])
-            out_data[2].append(sample_list[i][j][k])
-            path_now=lines0+'\\'+pressure_list[i]+'\\'+temp_list[i][j]+'\\'+sample_list[i][j][k];
-            judge_list0 = os.listdir(path_now);
+delete_num = 10  # 当前目录中非文件夹类型的文件数量
+elx_name = "henry_coefficients.xlsx"
+
+# 初始化数据结构，包括七个空列表
+out_data = [[], [], [], [], [], [], []]  # 初始数据结构，包含7列
+
+# 正则表达式模式，用于提取Henry coefficient数据
+pattern = r"\[(\w+)\] Average Henry coefficient:\s+([\d.eE+-]+)\s+\+/-\s+([\d.eE+-]+)"
+
+# 遍历目录结构，读取和处理数据
+pressure_list = os.listdir(lines0)
+for pressure in pressure_list:
+    path_now = os.path.join(lines0, pressure)
+    temp_list = os.listdir(path_now)
+
+    for temp_folder in temp_list:
+        path_now_j = os.path.join(path_now, temp_folder)
+        abc = os.listdir(path_now_j)
+        sample_list = abc[:-delete_num]  # 删除多余文件
+
+        for sample in sample_list:
+            out_data[0].append(pressure)  # 压力值
+            out_data[1].append(temp_folder)       # 温度值
+            out_data[2].append(sample)            # 样本名称
+
+            path_now_k = os.path.join(path_now_j, sample)
+            judge_list0 = os.listdir(path_now_k)
+
             if 'Output' in judge_list0:
-                path_now=lines0+'\\'+pressure_list[i]+'\\'+temp_list[i][j]+'\\'+sample_list[i][j][k]+'\\Output\\System_0';
-                filename = os.listdir(path_now)
-                f = open(path_now+'\\'+filename[0], 'rb', )
-                lines = f.readlines()
-                for m in range(len(Var_name)):
-                    for line in lines:
-                        if Var_name[m].encode() in line:
-                            #loc_num1 = re.search("\d", str(line)).span()
-                            if Var_state < Comp_num:
-                                key = 1;
-                            else:
-                                break
-                        if key == 1:
-                            read_num+=1;
-                        if read_num == delay_num:
-                            #loc_num1 = re.search("\d", str(line)).span()
-                            loc_num1 = [0]
-                            out_data[Comp_num*m+Var_state+3].append(str(line)[loc_num1[0]:len(str(line))-3])
-                            Var_state=Var_state+1;
-                            read_num = 0;
-                            key =0                  
-                    if Var_state == 0:
-                        for n in range(Comp_num):
-                            out_data[Comp_num*m+n+3].append('No this Variables');
-                    elif Var_state < Comp_num:
-                        for n in range(Comp_num-Var_state):
-                            out_data[Comp_num*m+Var_state+n+3].append('No this Variables');
-                        Var_state=0;
-                    else:
-                        Var_state=0;
+                path_now_output = os.path.join(path_now_k, 'Output', 'System_0')
+                filename = os.listdir(path_now_output)
+
+                if filename:
+                    for file_name in filename:
+                        with open(os.path.join(path_now_output, file_name), 'r') as f:
+                            lines = f.read()
+                        
+                        # 添加文件名
+                        out_data[3].append(file_name)
+
+                        # 使用正则表达式提取Henry coefficient数据
+                        results = re.findall(pattern, lines)
+                        if results:
+                            for gas, coeff, error in results:
+                                out_data[4].append(gas)
+                                out_data[5].append(float(coeff))
+                                out_data[6].append(float(error))
+                        else:
+                            out_data[4].append("No Data")
+                            out_data[5].append(None)
+                            out_data[6].append(None)
             else:
-                for m in range(len(Var_name)):
-                    for n in range(Comp_num):
-                            out_data[Comp_num*m+n+3].append('No Output');
-                    
-                            
-    sample_list[i].remove([])
-temp_list.remove([])
-sample_list.remove([[]])
-Var_name_real=[]
-for m in range(len(Var_name)):
-    for i in range(Comp_num):
-        Var_name_real.append(Var_name[m]+'_Comp.'+str(i+1))
-tot_name=["Pressure","Temperature","Sample Name"]+Var_name_real
-out_data =[[row[i] for row in out_data] for i in range(len(out_data[0]))]
-zaa = pd.DataFrame(out_data,columns=tot_name)
-zaa.to_excel('cof.xlsx',index = False)
-print("finished")
+                out_data[3].append('No Output folder')
+                out_data[4].append("No Output")
+                out_data[5].append(None)
+                out_data[6].append(None)
+
+# 生成 Excel 中的列名称
+tot_name = ["Pressure", "Temperature", "Sample Name", "Filename", "Gas", "Average Henry Coefficient", "Error"]
+
+# 将数据转换为 DataFrame 并保存到 Excel
+out_data = list(zip(*out_data))  # 转置数据结构以适应 DataFrame
+df = pd.DataFrame(out_data, columns=tot_name)
+df.to_excel(elx_name, index=False)
+
+print(f"数据已成功写入到 {elx_name}")
