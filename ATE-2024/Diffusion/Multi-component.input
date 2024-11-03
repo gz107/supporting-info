@@ -33,7 +33,7 @@ Component 0 MoleculeName                 methane
             IdentityChangeProbability    1.0
             NumberOfIdentityChanges      3
             IdentityChangesList          0 1 2
-            IdealGasRosenbluthWeight     1.00025
+            IdealGasRosenbluthWeight     1.0
             TranslationProbability       1.0
             RotationProbability          1.0
             ReinsertionProbability       1.0
@@ -46,7 +46,7 @@ Component 1 MoleculeName                 H2
             IdentityChangeProbability    1.0
             NumberOfIdentityChanges      3
             IdentityChangesList          0 1 2
-            IdealGasRosenbluthWeight     1.00002
+            IdealGasRosenbluthWeight     1.0
             TranslationProbability       1.0
             RotationProbability          1.0
             ReinsertionProbability       1.0
@@ -59,7 +59,7 @@ Component 2 MoleculeName                 ethane
             IdentityChangeProbability    1.0
             NumberOfIdentityChanges      3
             IdentityChangesList          0 1 2
-            IdealGasRosenbluthWeight     1.00074
+            IdealGasRosenbluthWeight     1.0
             TranslationProbability       1.0
             RotationProbability          1.0
             ReinsertionProbability       1.0
