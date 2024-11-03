@@ -32,5 +32,5 @@ Component 0 MoleculeName                 H2   #CH4; C2H6
             TranslationProbability       1.0
             RotationProbability          1.0
             ReinsertionProbability       1.0
-            CreateNumberOfMolecules      32
+            CreateNumberOfMolecules      30
 
