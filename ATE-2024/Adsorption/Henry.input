@@ -1,8 +1,8 @@
 SimulationType         MonteCarlo 
-NumberOfCycles            50000 
+NumberOfCycles            15000 
 NumberOfInitializationCycles 0 
-PrintEvery               25000 
-PrintPropertiesEvery     25000 
+PrintEvery               5000 
+PrintPropertiesEvery     5000 
 
 Forcefield             GenericMOFs 
 
