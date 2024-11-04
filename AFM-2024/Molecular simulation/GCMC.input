@@ -1,0 +1,46 @@
+SimulationType                MonteCarlo
+NumberOfCycles                 20000
+NumberOfInitializationCycles   20000
+RestartFile                    no
+PrintEvery                     10000
+
+Forcefield                    GenericMOFs
+UseChargesFromCIFFile         no
+
+RemoveAtomNumberCodeFromLabel yes
+
+
+CutOff                        12.0
+
+Framework                     0 
+FrameworkName                 SIFSIX_2_Ni_i
+UnitCells                     2 2 2
+ExternalTemperature           298
+ExternalPressure              10000
+HeliumVoidFraction            0.905251
+
+Movies                        no 
+WriteMoviesEvery              2000
+
+
+Component 0 MoleculeName             propane
+            MoleculeDefinition       TraPPE	
+            MolFraction              0.9
+            IdealGasRosenbluthWeight 1.0
+            TranslationProbability   0.5
+            RegrowProbability        0.5
+            RotationProbability      0.5
+            ReinsertionProbability   0.5
+            SwapProbability          1.0
+            CreateNumberOfMolecules  0
+
+Component 1 MoleculeName             propene
+            MoleculeDefinition       TraPPE	
+            MolFraction              0.1
+            IdealGasRosenbluthWeight 1.0
+            TranslationProbability   0.5
+            RegrowProbability        0.5
+            RotationProbability      0.5
+            ReinsertionProbability   0.5
+            SwapProbability          1.0
+            CreateNumberOfMolecules  0
