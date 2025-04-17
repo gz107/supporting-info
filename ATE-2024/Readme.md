@@ -6,5 +6,4 @@
 
 #-------------------------------#
 
-**Title: High-throughput screening of covalent organic framework membranes separation for hydrogen from hydrogen-blended natural gas**
-**Authors: Z.Gao, H.Wang, Z.G. Qu, Z.T.Tang**
+Z.Gao, H Wang, Z-G,Qu, Z.Tian, "High-throughput screening of covalent organicframework membranes separation for hydroge from hydrogen-blended natural gas",Applied Thermal Engineering.2025,271,126333
